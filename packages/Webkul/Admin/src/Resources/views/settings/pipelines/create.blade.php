@@ -159,17 +159,17 @@
                                     <!-- Stage Title and Action -->
                                     <div class="flex items-center justify-between">
                                         <span class="py-1 font-medium dark:text-gray-300">
-                                            @{{ element.name ? element.name : '@lang('admin::app.settings.pipelines.create.newly-added')'}} 
+                                            @{{ element.name ? element.name : '@lang('admin::app.settings.pipelines.create.newly-added')'}}
                                         </span>
 
                                         <!-- Drag Icon -->
                                         <i
-                                            v-if="isDragable(element)" 
+                                            v-if="isDragable(element)"
                                             class="icon-move cursor-grab rounded-md p-1 text-2xl transition-all hover:bg-gray-100 dark:hover:bg-gray-950"
                                         >
                                         </i>
                                     </div>
-                                    
+
                                     <!-- Card Body -->
                                     <div>
                                         <input
@@ -186,7 +186,7 @@
                                             <x-admin::form.control-group.label class="required">
                                                 @lang('admin::app.settings.pipelines.create.name')
                                             </x-admin::form.control-group.label>
-                                            
+
                                             <x-admin::form.control-group.control
                                                 type="text"
                                                 ::name="'stages[' + element.id + '][name]'"
@@ -229,16 +229,16 @@
                                         {!! view_render_event('admin.settings.pipelines.create.form.stages.probability.after') !!}
                                     </div>
                                 </div>
-                                
+
                                 {!! view_render_event('admin.settings.pipelines.create.form.stages.delete_button.before') !!}
 
                                 <div
-                                    class="flex cursor-pointer items-center gap-2 border-t border-gray-200 p-2 text-red-600 dark:border-gray-800" 
-                                    @click="removeStage(element)" 
+                                    class="flex cursor-pointer items-center gap-2 border-t border-gray-200 p-2 text-red-600 dark:border-gray-800"
+                                    @click="removeStage(element)"
                                     v-if="isDragable(element)"
                                 >
                                     <i class="icon-delete text-2xl"></i>
-                                    
+
                                     @lang('admin::app.settings.pipelines.create.delete-stage')
                                 </div>
 
@@ -289,7 +289,7 @@
                     return {
                         stages: [{
                             'id': 'stage_1',
-                            'code': 'new', 
+                            'code': 'new',
                             'name': "@lang('admin::app.settings.pipelines.create.new-stage')",
                             'probability': 100
                         }, {
@@ -301,11 +301,13 @@
                             'id': 'stage_99',
                             'code': 'won',
                             'name': "{{ __('admin::app.settings.pipelines.create.won-stage') }}",
+                            // 'name': "won",
                             'probability': 100
                         }, {
                             'id': 'stage_100',
                             'code': 'lost',
                             'name': "{{ __('admin::app.settings.pipelines.create.lost-stage') }}",
+                            // 'name': "lost",
                             'probability': 0
                         }],
 
@@ -348,7 +350,7 @@
                                 }
 
                                 this.removeUniqueNameErrors();
-                                
+
                                 this.$emitter.emit('add-flash', { type: 'success', message: "@lang('admin::app.settings.pipelines.create.stage-delete-success')" });
                             }
                         });
@@ -368,7 +370,7 @@
 
                             .toLowerCase()
 
-                            .replace(/[^\w\u0621-\u064A\u4e00-\u9fa5\u3402-\uFA6D\u3041-\u30A0\u30A0-\u31FF- ]+/g, '')
+                            .replace(/[^\w\u0621-\u064A\u4e00-\u9fa5\u3402-\uFA6D\u3041-\u30A0\u30A0-\u31FFа-яё\s-]+/gi, '')
 
                             // replace whitespaces with dashes
                             .replace(/ +/g, '-')
@@ -417,7 +419,7 @@
 
                     handleDragging(event) {
                         const draggedElement = event.draggedContext.element;
-                        
+
                         const relatedElement = event.relatedContext.element;
 
                         return this.isDragable(draggedElement) && this.isDragable(relatedElement);
