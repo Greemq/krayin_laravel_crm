@@ -226,7 +226,7 @@
 
                                         <!-- Activity Time and User -->
                                         <div class="text-gray-500 dark:text-gray-300">
-                                            @{{ $admin.formatDate(activity.created_at, 'd MMM yyyy, h:mm A') }},
+                                            @{{ $admin.formatDate(activity.created_at, 'd MMM yyyy, H:mm') }},
 
                                             @{{ "@lang('admin::app.components.activities.index.by-user', ['user' => 'replace'])".replace('replace', activity.user.name) }}
                                         </div>
