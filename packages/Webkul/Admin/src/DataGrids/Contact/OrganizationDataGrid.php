@@ -24,9 +24,9 @@ class OrganizationDataGrid extends DataGrid
         return DB::table('organizations')
             ->addSelect(
                 'organizations.id',
-                'Название организации',
-                'Адрес',
-                'Дата создания'
+                'organizations.name',
+                'organizations.address',
+                'organizations.created_at'
             );
 
         if ($userIds = bouncer()->getAuthorizedUserIds()) {
@@ -35,7 +35,7 @@ class OrganizationDataGrid extends DataGrid
 
         $this->addFilter('id', 'organizations.id');
 
-        $this->addFilter('organization', 'Название организации');
+        $this->addFilter('organization', 'organizations.name');
     }
 
     /**
