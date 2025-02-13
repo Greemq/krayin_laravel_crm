@@ -275,7 +275,7 @@
                     <!-- Table Head -->
                     <x-admin::table.thead>
                         <x-admin::table.thead.tr>
-                            <x-admin::table.th class="w-96">
+                            <x-admin::table.th class="w-80">
                                 @lang('admin::app.quotes.create.product-name')
                             </x-admin::table.th>
 
