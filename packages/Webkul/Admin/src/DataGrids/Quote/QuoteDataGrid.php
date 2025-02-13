@@ -41,8 +41,8 @@ class QuoteDataGrid extends DataGrid
         $this->addFilter('user', 'quotes.user_id');
         $this->addFilter('sales_person', 'users.name');
         $this->addFilter('person_name', 'persons.name');
-        $this->addFilter('expired_at', 'Дата истечения');
-        $this->addFilter('created_at', 'Дата создания');
+        $this->addFilter('expired_at', 'quotes.expired_at');
+        $this->addFilter('created_at', 'quotes.created_at');
 
         if (request()->input('expired_quotes.in') == 1) {
             $this->addFilter('expired_quotes', DB::raw('DATEDIFF(NOW(), '.$tablePrefix.'quotes.expired_at) >= '.$tablePrefix.'NOW()'));

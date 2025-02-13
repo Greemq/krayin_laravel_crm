@@ -19,12 +19,12 @@ class EmailDataGrid extends DataGrid
         $queryBuilder = DB::table('emails')
             ->select(
                 'emails.id',
-                'Имя',
-                'Тема',
-                'Ответ',
-                'Прочитано',
-                'Дата создания',
-                'tags.name as Теги',
+                'emails.name',
+                'emails.subject',
+                'emails.reply',
+                'emails.is_read',
+                'emails.created_at',
+                'tags.name as tags',
                 DB::raw('COUNT(DISTINCT '.DB::getTablePrefix().'email_attachments.id) as attachments')
             )
             ->leftJoin('email_attachments', 'emails.id', '=', 'email_attachments.email_id')
@@ -37,7 +37,7 @@ class EmailDataGrid extends DataGrid
         $this->addFilter('id', 'emails.id');
         $this->addFilter('name', 'Имя');
         $this->addFilter('tags', 'tags.name');
-        $this->addFilter('created_at', 'Дата создания');
+        $this->addFilter('created_at', 'emails.created_at');
 
         return $queryBuilder;
     }

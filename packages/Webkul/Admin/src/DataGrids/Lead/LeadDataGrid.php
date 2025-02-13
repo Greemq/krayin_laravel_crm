@@ -52,7 +52,7 @@ class LeadDataGrid extends DataGrid
             ->addSelect(
                 'leads.id',
                 'leads.title',
-                'leads.status as Статус',
+                'leads.status',
                 'leads.lead_value',
                 'leads.expected_close_date',
                 'lead_sources.name as lead_source_name',
