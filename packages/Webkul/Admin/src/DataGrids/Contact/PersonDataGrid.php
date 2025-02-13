@@ -24,11 +24,11 @@ class PersonDataGrid extends DataGrid
         $queryBuilder = DB::table('persons')
             ->addSelect(
                 'persons.id',
-                'persons.name as Имя_персоны',
-                'Электронная почта',
-                'Контактные номера',
-                'organizations.name as Организация',
-                'organizations.id as ID_организации'
+                'persons.name as person_name',
+                'persons.emails',
+                'persons.contact_numbers',
+                'organizations.name as organization',
+                'organizations.id as organization_id'
             )
             ->leftJoin('organizations', 'persons.organization_id', '=', 'organizations.id');
 
