@@ -3,6 +3,7 @@
 namespace Webkul\Core;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Webkul\Core\Repositories\CoreConfigRepository;
 use Webkul\Core\Repositories\CountryRepository;
 use Webkul\Core\Repositories\CountryStateRepository;
@@ -167,9 +168,9 @@ class Core
      *
      * @return string
      */
-    public function formatDate($date, $format = 'd M Y h:iA')
+    public function formatDate($date, $format = 'd M Y H:i')
     {
-        return Carbon::parse($date)->format($format);
+        return Carbon::parse($date)->locale('ru')->translatedFormat($format);
     }
 
     /**
