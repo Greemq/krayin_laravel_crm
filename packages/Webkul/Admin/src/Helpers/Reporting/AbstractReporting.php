@@ -167,7 +167,6 @@ abstract class AbstractReporting
              * If the difference between the start and end date is more than 5 months
              */
             $intervals = $this->getMonthsInterval($startDate, $endDate);
-
             if (! empty($intervals)) {
                 return [
                     'group_column' => "MONTH($dateColumn)",
@@ -258,8 +257,8 @@ abstract class AbstractReporting
 
             $intervals[] = [
                 'filter' => $start->month,
-                'start'  => $start->format('d M'),
-                'end'    => $end->format('d M'),
+                'start'  => $start->locale('ru')->translatedFormat('d M'),
+                'end'    => $end->locale('ru')->translatedFormat('d M'),
             ];
         }
 
@@ -305,8 +304,8 @@ abstract class AbstractReporting
 
             $intervals[] = [
                 'filter' => $start->week,
-                'start'  => $start->format('d M'),
-                'end'    => $end->format('d M'),
+                'start'  => $start->locale('ru')->translatedFormat('d M'),
+                'end'    => $end->locale('ru')->translatedFormat('d M'),
             ];
         }
 
@@ -333,8 +332,8 @@ abstract class AbstractReporting
 
             $intervals[] = [
                 'filter' => $intervalStartDate->dayOfYear,
-                'start'  => $intervalStartDate->startOfDay()->format('d M'),
-                'end'    => $intervalStartDate->endOfDay()->format('d M'),
+                'start'  => $intervalStartDate->startOfDay()->locale('ru')->translatedFormat('d M'),
+                'end'    => $intervalStartDate->endOfDay()->locale('ru')->translatedFormat('d M'),
             ];
         }
 

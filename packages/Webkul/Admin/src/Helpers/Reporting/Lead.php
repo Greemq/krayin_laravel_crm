@@ -3,6 +3,7 @@
 namespace Webkul\Admin\Helpers\Reporting;
 
 use Illuminate\Support\Facades\DB;
+
 use Webkul\Lead\Repositories\LeadRepository;
 use Webkul\Lead\Repositories\StageRepository;
 
@@ -54,7 +55,6 @@ class Lead extends AbstractReporting
     public function getTotalLeadsOverTime($period = 'auto'): array
     {
         $this->stageIds = $this->allStageIds;
-
         return $this->getOverTimeStats($this->startDate, $this->endDate, 'leads.id', 'created_at', $period);
     }
 
@@ -335,7 +335,6 @@ class Lead extends AbstractReporting
         }
 
         $results = $query->get();
-
         foreach ($config['intervals'] as $interval) {
             $total = $results->where('date', $interval['filter'])->first();
 
@@ -345,7 +344,6 @@ class Lead extends AbstractReporting
                 'count' => $total?->count ?? 0,
             ];
         }
-
         return $stats ?? [];
     }
 }
