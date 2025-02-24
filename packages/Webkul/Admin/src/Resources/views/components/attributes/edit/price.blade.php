@@ -20,6 +20,7 @@
             ::rules="getValidation"
             ::label="attribute.name"
         />
+
     </script>
 
     <script type="module">
@@ -33,7 +34,7 @@
                     return {
                         decimal: true,
                         min_value: 0,
-                        ...(this.validations === 'required' ? { required: true } : {}),
+                        ...(['required','required|decimal'].includes(this.validations) ? { required: true } : {}),
                     };
                 },
             },

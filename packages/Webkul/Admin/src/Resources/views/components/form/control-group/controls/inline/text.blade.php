@@ -1,5 +1,6 @@
 @props([
     'allowEdit' => true,
+    'sumValue'=>0
 ])
 
 <v-inline-text-edit
@@ -37,19 +38,22 @@
                     :style="{ 'text-align': position }"
                 >
                     <span class="cursor-pointer truncate rounded">
-                        @{{ 
-                            (transformedLabel || inputValue || '').length > 20 
-                                ? (transformedLabel || inputValue).substring(0, 20) + '...' 
-                                : (transformedLabel || inputValue) 
+                        @{{
+                        (transformedLabel || inputValue || '').length > 20
+                        ? (transformedLabel || inputValue).substring(0, 20) + '...'
+                        : (transformedLabel || inputValue)
                         }}
+
+{{--                        @{{ sumValue?sumValue:0 }}--}}
                     </span>
-                    
+
                     <!-- Tooltip -->
                     <div
                         class="absolute bottom-0 mb-5 hidden flex-col group-hover:flex"
                         v-if="inputValue?.length > 20"
                     >
-                        <span class="whitespace-no-wrap relative z-10 rounded-md bg-black px-4 py-2 text-xs leading-none text-white shadow-lg dark:bg-white dark:text-gray-900">
+                        <span
+                            class="whitespace-no-wrap relative z-10 rounded-md bg-black px-4 py-2 text-xs leading-none text-white shadow-lg dark:bg-white dark:text-gray-900">
                             @{{ inputValue }}
                         </span>
 
@@ -64,7 +68,7 @@
                     ></i>
                 </template>
             </div>
-        
+
             <!-- Editing view -->
             <div
                 class="relative w-full"
@@ -81,7 +85,7 @@
                     v-model="inputValue"
                     ref="input"
                 />
-                    
+
                 <!-- Action Buttons -->
                 <div class="absolute top-[6px] flex gap-0.5 ltr:right-2 rtl:left-2">
                     <button
@@ -89,15 +93,15 @@
                         class="flex items-center justify-center bg-green-100 p-1 hover:bg-green-200 ltr:rounded-l-md rtl:rounded-r-md"
                         @click="save"
                     >
-                        <i class="icon-tick text-md cursor-pointer font-bold text-green-600 dark:!text-green-600" />
+                        <i class="icon-tick text-md cursor-pointer font-bold text-green-600 dark:!text-green-600"/>
                     </button>
-                
+
                     <button
                         type="button"
                         class="flex items-center justify-center bg-red-100 p-1 hover:bg-red-200 ltr:rounded-r-md rtl:rounded-l-md"
                         @click="cancel"
                     >
-                        <i class="icon-cross-large text-md cursor-pointer font-bold text-red-600 dark:!text-red-600" />
+                        <i class="icon-cross-large text-md cursor-pointer font-bold text-red-600 dark:!text-red-600"/>
                     </button>
                 </div>
 
@@ -183,8 +187,8 @@
             watch: {
                 /**
                  * Watch the value prop.
-                 * 
-                 * @param {String} newValue 
+                 *
+                 * @param {String} newValue
                  */
                 value(newValue) {
                     this.inputValue = newValue;
@@ -194,7 +198,7 @@
             methods: {
                 /**
                  * Toggle the input.
-                 * 
+                 *
                  * @return {void}
                  */
                 toggle() {
@@ -205,7 +209,7 @@
 
                 /**
                  * Save the input value.
-                 * 
+                 *
                  * @return {void}
                  */
                 save() {
@@ -219,7 +223,7 @@
                         let formData = new FormData();
 
                         this.transformedLabel = this.inputValue;
-                        
+
                         formData.append(this.name, this.inputValue);
 
                         formData.append('_method', 'PUT');
@@ -229,15 +233,15 @@
                             ...Object.fromEntries(formData),
                         })
                             .then((response) => {
-                                this.$emitter.emit('add-flash', { type: 'success', message: response.data.message });
+                                this.$emitter.emit('add-flash', {type: 'success', message: response.data.message});
                             })
                             .catch((error) => {
                                 this.inputValue = this.value;
 
                                 this.transformedLabel = this.inputValue;
 
-                                this.$emitter.emit('add-flash', { type: 'error', message: error.response.data.message });
-                            });                        
+                                this.$emitter.emit('add-flash', {type: 'error', message: error.response.data.message});
+                            });
                     }
 
                     this.$emit('on-change', {
@@ -248,7 +252,7 @@
 
                 /**
                  * Cancel the input value.
-                 * 
+                 *
                  * @return {void}
                  */
                 cancel() {

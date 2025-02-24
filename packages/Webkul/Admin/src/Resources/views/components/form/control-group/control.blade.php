@@ -105,7 +105,7 @@
             </textarea>
 
             @if ($attributes->get('tinymce', false) || $attributes->get(':tinymce', false))
-                <x-admin::tinymce 
+                <x-admin::tinymce
                     :selector="'textarea#' . $attributes->get('id')"
                     ::field="field"
                 />
@@ -207,7 +207,7 @@
         </v-field>
 
         <label
-             {{ 
+             {{
                 $attributes
                     ->except(['value', ':value', 'v-model', 'rules', ':rules', 'label', ':label', 'key', ':key'])
                     ->merge(['class' => 'text-gray-500 icon-checkbox-outline peer-checked:icon-checkbox-select text-2xl peer-checked:text-blue-600'])
@@ -232,7 +232,7 @@
                 v-bind="field"
                 {{ $attributes->except(['rules', 'label', ':label', 'key', ':key'])->merge(['class' => 'peer sr-only']) }}
             />
-                
+
             <v-checked-handler
                 class="hidden"
                 :field="field"
@@ -265,7 +265,7 @@
                     v-bind="field"
                     {{ $attributes->except(['v-model', 'rules', ':rules', 'label', ':label', 'key', ':key']) }}
                 />
-                
+
                 <v-checked-handler
                     class="hidden"
                     :field="field"
@@ -290,7 +290,7 @@
         />
 
         @break
-    
+
     @case('inline')
         <x-admin::form.control-group.controls.inline.text {{ $attributes }}/>
 

@@ -52,6 +52,12 @@ return [
             'path'   => storage_path('logs/laravel.log'),
             'level'  => env('LOG_LEVEL', 'debug'),
             'days'   => 14,
+        'permission' => 0666,
+        'formatter' => \Monolog\Formatter\LineFormatter::class,
+        'formatter_with' => [
+            'format' => "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n",
+            'include_stacktraces' => true,
+        ],
         ],
 
         'slack' => [

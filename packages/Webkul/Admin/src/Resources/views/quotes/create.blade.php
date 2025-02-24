@@ -475,6 +475,7 @@
                             position="center"
                             ::value-label="$admin.formatPrice(product.price)"
                         />
+{{--                        @{{ product.price }}--}}
                     </x-admin::form.control-group>
                 </x-admin::table.td>
 

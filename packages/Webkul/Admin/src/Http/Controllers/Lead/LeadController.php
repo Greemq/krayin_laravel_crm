@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Webkul\Admin\DataGrids\Lead\LeadDataGrid;
@@ -147,6 +148,8 @@ class LeadController extends Controller
      */
     public function store(LeadForm $request): RedirectResponse
     {
+        Log::error('request_all');
+        Log::error($request->all());
         Event::dispatch('lead.create.before');
 
         $data = $request->all();
