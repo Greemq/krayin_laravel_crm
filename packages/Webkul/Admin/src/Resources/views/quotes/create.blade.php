@@ -474,6 +474,7 @@
                             @on-change="(event) => product.price = event.value"
                             position="center"
                             ::value-label="$admin.formatPrice(product.price)"
+                            isNum
                         />
 {{--                        @{{ product.price }}--}}
                     </x-admin::form.control-group>
@@ -493,6 +494,7 @@
                             :allowEdit="false"
                             position="center"
                             ::value-label="$admin.formatPrice(product.price * product.quantity)"
+                            isNum
                         />
                     </x-admin::form.control-group>
                 </x-admin::table.td>
@@ -511,6 +513,7 @@
                             @on-change="(event) => product.discount_amount = event.value"
                             position="center"
                             ::value-label="$admin.formatPrice(product.discount_amount)"
+                            isNum
                         />
                     </x-admin::form.control-group>
                 </x-admin::table.td>
@@ -529,6 +532,7 @@
                             @on-change="(event) => product.tax_amount = event.value"
                             position="center"
                             ::value-label="$admin.formatPrice(product.tax_amount)"
+                            isNum
                         />
                     </x-admin::form.control-group>
                 </x-admin::table.td>
@@ -544,6 +548,7 @@
                             :allowEdit="false"
                             position="center"
                             ::value-label="$admin.formatPrice(parseFloat(product.price * product.quantity) + parseFloat(product.tax_amount) - parseFloat(product.discount_amount))"
+                            isNum
                         />
                     </x-admin::form.control-group>
                 </x-admin::table.td>

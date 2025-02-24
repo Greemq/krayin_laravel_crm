@@ -39,12 +39,12 @@
                 >
                     <span class="cursor-pointer truncate rounded">
                         @{{
+                        isNum?toFixed(value):(
                         (transformedLabel || inputValue || '').length > 20
                         ? (transformedLabel || inputValue).substring(0, 20) + '...'
-                        : (transformedLabel || inputValue)
+                        : (transformedLabel || inputValue))
                         }}
 
-{{--                        @{{ sumValue?sumValue:0 }}--}}
                     </span>
 
                     <!-- Tooltip -->
@@ -170,6 +170,10 @@
                     type: String,
                     default: '',
                 },
+                isNum: {
+                    type: Boolean,
+                    default: false
+                }
             },
 
             data() {
@@ -196,6 +200,9 @@
             },
 
             methods: {
+                toFixed(val) {
+                    return val ? Number(val).toFixed(2) : "0.00";
+                },
                 /**
                  * Toggle the input.
                  *

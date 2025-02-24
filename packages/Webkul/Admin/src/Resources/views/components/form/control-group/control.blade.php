@@ -323,7 +323,7 @@
         app.component('v-checked-handler', {
             template: '#v-checked-handler-template',
 
-            props: ['field', 'checked'],
+            props: ['field', 'checked','showValue'],
 
             mounted() {
                 if (this.checked == '') {
