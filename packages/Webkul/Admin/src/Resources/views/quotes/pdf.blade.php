@@ -100,7 +100,7 @@
                 border-collapse: separate;
                 margin-bottom: 16px;
             }
-            
+
             table thead th {
                 background-color: #E9EFFC;
                 color: #000DBB;
@@ -173,7 +173,7 @@
                         <tr>
                             <td style="width: 50%; padding: 2px 18px;border:none;">
                                 <b>
-                                    @lang('admin::app.quotes.index.pdf.quote-id'): 
+                                    @lang('admin::app.quotes.index.pdf.quote-id'):
                                 </b>
 
                                 <span>
@@ -195,7 +195,7 @@
                         <tr>
                             <td style="width: 50%; padding: 2px 18px;border:none;">
                                 <b>
-                                    @lang('admin::app.quotes.index.pdf.sales-person'): 
+                                    @lang('admin::app.quotes.index.pdf.sales-person'):
                                 </b>
 
                                 <span>
@@ -213,7 +213,7 @@
                                 </span>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td style="width: 50%; padding: 2px 18px;border:none;">
                                 <b>
@@ -285,7 +285,7 @@
                                     <div>{{ core()->country_name($quote->billing_address['country'] ?? '') }}</div>
                                 </td>
                             @endif
-                            
+
                             @if ($quote->shipping_address)
                                 <td style="width: 50%">
                                     <div>{{ $quote->shipping_address['address'] ?? ''}}</div>
@@ -358,7 +358,7 @@
                                     <td class="text-center">{!! core()->formatBasePrice($item->discount_amount, true) !!}</td>
 
                                     <td class="text-center">{!! core()->formatBasePrice($item->tax_amount, true) !!}</td>
-                                    
+
                                     <td class="text-center">{!! core()->formatBasePrice($item->total + $item->tax_amount - $item->discount_amount, true) !!}</td>
                                 </tr>
                             @endforeach
@@ -375,25 +375,25 @@
                                 <td>-</td>
                                 <td>{!! core()->formatBasePrice($quote->sub_total, true) !!}</td>
                             </tr>
-        
+
                             <tr>
                                 <td>@lang('admin::app.quotes.index.pdf.tax')</td>
                                 <td>-</td>
                                 <td>{!! core()->formatBasePrice($quote->tax_amount, true) !!}</td>
                             </tr>
-        
+
                             <tr>
                                 <td>@lang('admin::app.quotes.index.pdf.discount')</td>
                                 <td>-</td>
                                 <td>{!! core()->formatBasePrice($quote->discount_amount, true) !!}</td>
                             </tr>
-        
+
                             <tr>
                                 <td>@lang('admin::app.quotes.index.pdf.adjustment')</td>
                                 <td>-</td>
                                 <td>{!! core()->formatBasePrice($quote->adjustment_amount, true) !!}</td>
                             </tr>
-        
+
                             <tr>
                                 <td><strong>@lang('admin::app.quotes.index.pdf.grand-total')</strong></td>
                                 <td><strong>-</strong></td>

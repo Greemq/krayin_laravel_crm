@@ -4,6 +4,7 @@ namespace Webkul\Admin\DataGrids\Quote;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Webkul\DataGrid\DataGrid;
 
 class QuoteDataGrid extends DataGrid
@@ -105,9 +106,11 @@ class QuoteDataGrid extends DataGrid
                 ],
             ],
             'closure'    => function ($row) {
-                $route = route('admin.contacts.persons.view', $row->person_id);
 
-                return "<a class=\"text-brandColor transition-all hover:underline\" href='".$route."'>".$row->person_name.'</a>';
+//                $route = route('admin.contacts.persons.view', $row->person_id);
+
+//                return "<a class=\"text-brandColor transition-all hover:underline\" href='".$route."'>".$row->person_name.'</a>';
+                return "<a class=\"text-brandColor transition-all hover:underline\" href=''>".'</a>';
             },
         ]);
 
