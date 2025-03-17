@@ -24,6 +24,8 @@ window.app = createApp({
         onSubmit() {},
 
         onInvalidSubmit({ values, errors, results }) {
+            console.log(1)
+            console.log(errors)
             setTimeout(() => {
                 const errorKeys = Object.entries(errors)
                     .map(([key, value]) => ({ key, value }))

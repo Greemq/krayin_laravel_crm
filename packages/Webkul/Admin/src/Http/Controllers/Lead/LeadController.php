@@ -148,8 +148,6 @@ class LeadController extends Controller
      */
     public function store(LeadForm $request): RedirectResponse
     {
-        Log::error('request_all');
-        Log::error($request->all());
         Event::dispatch('lead.create.before');
 
         $data = $request->all();

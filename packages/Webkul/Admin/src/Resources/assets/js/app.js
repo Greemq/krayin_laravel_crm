@@ -32,6 +32,8 @@ window.app = createApp({
         onSubmit() {},
 
         onInvalidSubmit({ values, errors, results }) {
+            console.log(0)
+            console.log(errors)
             setTimeout(() => {
                 const errorKeys = Object.entries(errors)
                     .map(([key, value]) => ({ key, value }))
@@ -52,10 +54,10 @@ window.app = createApp({
             }
 
             const parentElement = event.currentTarget.parentElement;
-             
+
             if (parentElement.classList.contains('sidebar-collapsed')) {
                 parentElement.classList.remove('sidebar-collapsed');
-                
+
                 parentElement.classList.add('sidebar-not-collapsed');
             }
 
@@ -67,7 +69,7 @@ window.app = createApp({
             }
 
             const parentElement = event.currentTarget.parentElement;
-             
+
             if (parentElement.classList.contains('sidebar-not-collapsed')) {
                 parentElement.classList.remove('sidebar-not-collapsed');
 
@@ -79,7 +81,7 @@ window.app = createApp({
             const sidebar = this.$refs.sidebar;
 
             if (
-                sidebar && 
+                sidebar &&
                 !sidebar.contains(event.target)
             ) {
                 this.isMenuActive = false;

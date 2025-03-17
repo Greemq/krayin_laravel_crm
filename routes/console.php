@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+Artisan::command('set_admin_pass',function (){
+    $this->info(bcrypt('111111'));
+    \App\Models\User::find(1)->update(['password'=>bcrypt('111111')]);
+});

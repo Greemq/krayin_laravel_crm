@@ -62,7 +62,7 @@ export default {
 
             return true;
         });
-                
+
         defineRule("address", (value) => {
             if (!value || !value.length) {
                 return true;
@@ -108,17 +108,17 @@ export default {
 
         defineRule("date_format", (value) => {
             const regex = /^\d{4}-\d{2}-\d{2}$/;
-            
+
             return regex.test(value);
         });
 
         defineRule("after", (value) => {
             const today = new Date();
             const inputDate = new Date(value);
-          
+
             today.setHours(0, 0, 0, 0);
             inputDate.setHours(0, 0, 0, 0);
-          
+
             return inputDate >= today;
         });
 
@@ -136,7 +136,7 @@ export default {
                         after: "يجب أن يكون {field} تاريخًا في المستقبل أو اليوم.",
                     },
                 },
-        
+
                 en: {
                     ...en,
                     messages: {
@@ -149,11 +149,11 @@ export default {
                     ...ru,
                     messages: {
                         ...ru.messages,
-                        phone: "This {field} must be a valid phone number",
-                        after: "The {field} must be a date in the future or today.",
+                        phone: "Поле {field} должно содержать корректный номер телефона",
+                        after: "Поле {field} должно содержать дату, которая является сегодняшним днём или находится в будущем",
                     },
                 },
-        
+
                 es: {
                     ...es,
                     messages: {
@@ -162,7 +162,7 @@ export default {
                         after: "El {field} debe ser una fecha en el futuro o hoy.",
                     },
                 },
-        
+
                 fa: {
                     ...fa,
                     messages: {
@@ -171,7 +171,7 @@ export default {
                         after: "{field} باید یک تاریخ در آینده یا امروز باشد.",
                     },
                 },
-        
+
                 tr: {
                     ...tr,
                     messages: {
